@@ -1,0 +1,72 @@
+root@student7-virtual-machine:~/linkdir# ls
+orignafile
+root@student7-virtual-machine:~/linkdir# ln originafile hardlink
+ln: 'originafile' 접근 실패: 그런 파일이나 디렉터리가 없습니다
+root@student7-virtual-machine:~/linkdir# ln orignafile hardlink
+root@student7-virtual-machine:~/linkdir# ln -s  orignafile softlink
+root@student7-virtual-machine:~/linkdir# ls -l
+합계 8
+-rw-r--r-- 2 root root 24  5월  9 10:58 hardlink
+-rw-r--r-- 2 root root 24  5월  9 10:58 orignafile
+lrwxrwxrwx 1 root root 10  5월  9 11:11 softlink -> orignafile
+root@student7-virtual-machine:~/linkdir# ls -il
+합계 8
+1050608 -rw-r--r-- 2 root root 24  5월  9 10:58 hardlink
+1050608 -rw-r--r-- 2 root root 24  5월  9 10:58 orignafile
+1050607 lrwxrwxrwx 1 root root 10  5월  9 11:11 softlink -> orignafile
+root@student7-virtual-machine:~/linkdir# mv orignafile ../
+root@student7-virtual-machine:~/linkdir# ls
+hardlink  softlink
+root@student7-virtual-machine:~/linkdir# cat hardlink
+원본파일입니다.
+
+root@student7-virtual-machine:~/linkdir# cat softlink
+cat: softlink: 그런 파일이나 디렉터리가 없습니다
+root@student7-virtual-machine:~/linkdir# cd
+root@student7-virtual-machine:~# ls -il orignafile
+1050608 -rw-r--r-- 2 root root 24  5월  9 10:58 orignafile
+root@student7-virtual-machine:~# mv orignafile /linkdir
+root@student7-virtual-machine:~# cd linkdir 
+root@student7-virtual-machine:~/linkdir# ls
+hardlink  softlink
+root@student7-virtual-machine:~/linkdir# mv orignafile ./linkdir
+mv: 'orignafile' 상태 정보 확인 불가: 그런 파일이나 디렉터리가 없습니다
+root@student7-virtual-machine:~/linkdir# mv ../orignafile 
+mv: '../orignafile' 다음에 대상 파일 명령이 누락됨
+자세한 정보는 'mv --help'를 입력하십시오.
+root@student7-virtual-machine:~/linkdir# mv ../orignafile ./
+mv: '../orignafile' 상태 정보 확인 불가: 그런 파일이나 디렉터리가 없습니다
+root@student7-virtual-machine:~/linkdir# ls
+hardlink  softlink
+root@student7-virtual-machine:~/linkdir# cd
+root@student7-virtual-machine:~# ls
+linkdir  student7.tar  test1      test2.txt.xz  공개      바탕화면  음악
+new.txt  student71.xz  test2      test3         다운로드  비디오    템플릿
+snap     test          test2.txt  test3.txt     문서      사진
+root@student7-virtual-machine:~# mv /linkdir/orignafile ./linkdir
+mv: '/linkdir/orignafile' 상태 정보 확인 불가: 디렉터리가 아닙니다
+root@student7-virtual-machine:~# nano originafile
+root@student7-virtual-machine:~# ln originafile hardlink
+root@student7-virtual-machine:~# ln originafile softlink
+root@student7-virtual-machine:~# cat hardlink
+원본파일
+root@student7-virtual-machine:~# cat softlink
+원본파일
+root@student7-virtual-machine:~# yes >/dev/null
+^Z      
+[1]+  멈춤                  yes > /dev/null
+root@student7-virtual-machine:~# yes > /dev/null
+[1]+  죽었음               yes > /dev/null
+죽었음
+root@student7-virtual-machine:~# ^C
+root@student7-virtual-machine:~# 
+
+root@student7-virtual-machine:~/바탕화면# ps  -ef|grep yes
+root        3245    1989 10 11:36 pts/0    00:00:22 yes
+root        3246    1989 99 11:37 pts/0    00:02:29 yes
+root        3264    3254  0 11:39 pts/1    00:00:00 grep --color=auto yes
+root@student7-virtual-machine:~/바탕화면# kill -9 5526
+bash: kill: (5526) - 그런 프로세스가 없음
+root@student7-virtual-machine:~/바탕화면# kill -9 3245
+root@student7-virtual-machine:~/바탕화면# kill -9 3246
+root@student7-virtual-machine:~/바탕화면# 
