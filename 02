@@ -1,0 +1,129 @@
+root@student7-virtual-machine:~/바탕화면# tail /etc/shadow
+gnome-initial-setup:*:19411:0:99999:7:::
+hplip:*:19411:0:99999:7:::
+gdm:*:19411:0:99999:7:::
+student7:$y$j9T$/WdeSJb8ZMEU.hnCZbDuR.$b3Cf/NWdfWKHyMqOR.YChOUndTLJFaUU7OBqEYOcga9:19430:0:99999:7:::
+student71:$y$j9T$JfN3ztAN6mcNJaIrdBEAk.$ngGx0Exp/T.wBwtdBiUgxnZzt1cSc3oZf0uqNhnPW07:19479:10:30:10::18627:
+student2:$y$j9T$YPrXr6p6Fteu82JQvsqgK0$Oz64OC/SXpygISqIkvTHuBPp9jXJiF4fWLnnwb5Fvq7:19479:0:99999:7:::
+student3:$y$j9T$4O94lmrdr..I1jP0H8lrm0$in8orWlQHNY.4IEvXgC7WJ2ZzIL0enFawGbiMaqTea9:19479:0:99999:7:::
+student4:$y$j9T$0JNiwYlHGO64Jsv3OihXj0$YHF/azZc4wTnqt.qR4a8mAs8smQTd9oyI3Cv8rY1CD7:19479:0:99999:7:::
+hanbit1:$y$j9T$fBF1Jj4QxRxLN47U9EmxI/$obOByr/94/SPcKCO8lsxgaIJTIJbFFozvDoIR1ciKNB:19479:0:99999:7:::
+hanbit2:$y$j9T$bpCS2m7u6m6MSy/MTMzPE/$.FL/BmGvzTvV1FBK4wLnXFZKNUhVSOX2UdB7QHu43d6:19479:0:99999:7:::
+root@student7-virtual-machine:~/바탕화면# chown student7 mydata.txt
+root@student7-virtual-machine:~/바탕화면# ls-l mydata.txt
+ls-l: 명령을 찾을 수 없습니다
+root@student7-virtual-machine:~/바탕화면# chown student7 mydata.txt
+root@student7-virtual-machine:~/바탕화면# chown student71 mydata.txt
+root@student7-virtual-machine:~/바탕화면# ls -l mydata.txt
+-r-xrw-r-x 1 student71 root 0  5월  9 09:26 mydata.txt
+root@student7-virtual-machine:~/바탕화면# chown student2.student2 mydata.txt
+root@student7-virtual-machine:~/바탕화면# ls -l mydata.txt
+-r-xrw-r-x 1 student2 student2 0  5월  9 09:26 mydata.txt
+root@student7-virtual-machine:~/바탕화면# chgrp student3 mydata.txt
+chgrp: 잘못된 그룹: `student3'
+root@student7-virtual-machine:~/바탕화면# chgrp root  mydata.txt
+root@student7-virtual-machine:~/바탕화면# ls -l mydata.txt
+-r-xrw-r-x 1 student2 root 0  5월  9 09:26 mydata.txt
+root@student7-virtual-machine:~/바탕화면# groups student3
+student3 : student7
+root@student7-virtual-machine:~/바탕화면# nano sample
+root@student7-virtual-machine:~/바탕화면# cat sample
+리눅스 명령 연습중
+파일 허가권과 소유권에 대한 명령 실습중
+ls /var 
+root@student7-virtual-machine:~/바탕화면# chmod u+x sample
+root@student7-virtual-machine:~/바탕화면# ls -l sample
+-rwxr--r-- 1 root root 93  5월  9 10:15 sample
+root@student7-virtual-machine:~/바탕화면# sample
+명령어 'sample' 을(를) 찾을 수 없습니다. 그러나 다음을 통해 설치할 수 있습니다:
+apt install barcode
+root@student7-virtual-machine:~/바탕화면# ./sample
+./sample: 줄 1: 리눅스: 명령어를 찾을 수 없음
+./sample: 줄 2: 파일: 명령어를 찾을 수 없음
+backups  crash	local  log   metrics  run   spool
+cache	 lib	lock   mail  opt      snap  tmp
+root@student7-virtual-machine:~/바탕화면# ls -l sample
+-rwxr--r-- 1 root root 93  5월  9 10:15 sample
+root@student7-virtual-machine:~/바탕화면# chwon student4 sample
+명령어 'chwon' 을(를) 찾을 수 없습니다. 다음 명령어로 시도하시겠습니까:
+  deb chowncoreutils의 명령어 ' (8.32-4.1ubuntu1)'
+  deb chconcoreutils의 명령어 ' (8.32-4.1ubuntu1)'
+Try: apt install <deb name>
+root@student7-virtual-machine:~/바탕화면# chown student71  sample
+root@student7-virtual-machine:~/바탕화면# ls -l sample
+-rwxr--r-- 1 student71 root 93  5월  9 10:15 sample
+root@student7-virtual-machine:~/바탕화면# chown student71.student71 sample
+root@student7-virtual-machine:~/바탕화면# ls -l sample
+-rwxr--r-- 1 student71 student71 93  5월  9 10:15 sample
+root@student7-virtual-machine:~/바탕화면# chmod 754 sample
+root@student7-virtual-machine:~/바탕화면# ls -l sample
+-rwxr-xr-- 1 student71 student71 93  5월  9 10:15 sample
+root@student7-virtual-machine:~/바탕화면# su - student71
+계정이 만료되었습니다; 시스템 관리자에게 알려 주십시오.
+su: 인증 실패
+root@student7-virtual-machine:~/바탕화면# su - student7
+student7@student7-virtual-machine:~$ ~$ pwd
+~$: 명령을 찾을 수 없습니다
+student7@student7-virtual-machine:~$ pwd
+/home/student7
+student7@student7-virtual-machine:~$ ls -l/root/sample
+ls: 부적절한 옵션 -- '/'
+자세한 정보는 'ls --help'를 입력하십시오.
+student7@student7-virtual-machine:~$ ls -l /root/sample
+ls: '/root/sample'에 접근할 수 없음: 허가 거부
+student7@student7-virtual-machine:~$ ls  -l /root/sample
+ls: '/root/sample'에 접근할 수 없음: 허가 거부
+student7@student7-virtual-machine:~$ ls -ld/root
+ls: 부적절한 옵션 -- '/'
+자세한 정보는 'ls --help'를 입력하십시오.
+student7@student7-virtual-machine:~$ ls -ld /root
+drwx------ 17 root root 4096  4월 18 11:08 /root
+student7@student7-virtual-machine:~$ logout
+root@student7-virtual-machine:~/바탕화면# mv sample ~student7
+root@student7-virtual-machine:~/바탕화면# ls -l sample
+ls: 'sample'에 접근할 수 없음: 그런 파일이나 디렉터리가 없습니다
+root@student7-virtual-machine:~/바탕화면# su -student7
+su: failed to execute tudent7: 그런 파일이나 디렉터리가 없습니다
+root@student7-virtual-machine:~/바탕화면# su - student7
+student7@student7-virtual-machine:~$ ls -l sample
+-rwxr-xr-- 1 student71 student71 93  5월  9 10:15 sample
+student7@student7-virtual-machine:~$ pwd
+/home/student7
+student7@student7-virtual-machine:~$ ls -ld /home/student7
+drwxr-x--- 14 student7 student7 4096  5월  9 10:42 /home/student7
+student7@student7-virtual-machine:~$ chmod 777 sample
+chmod: 'sample'의 권한 바꾸는 중: 명령을 허용하지 않음
+student7@student7-virtual-machine:~$ ls -l sample
+-rwxr-xr-- 1 student71 student71 93  5월  9 10:15 sample
+student7@student7-virtual-machine:~$ chmod 777 sample
+chmod: 'sample'의 권한 바꾸는 중: 명령을 허용하지 않음
+student7@student7-virtual-machine:~$ logout
+root@student7-virtual-machine:~/바탕화면# chown student7.student7 sample
+chown: 'sample'에 접근할 수 없음: 그런 파일이나 디렉터리가 없습니다
+root@student7-virtual-machine:~/바탕화면# cd
+root@student7-virtual-machine:~# chown student7.student7 sample
+chown: 'sample'에 접근할 수 없음: 그런 파일이나 디렉터리가 없습니다
+root@student7-virtual-machine:~# su - student7 
+student7@student7-virtual-machine:~$ cd ~student7
+student7@student7-virtual-machine:~$ ls
+sample  snap  공개  다운로드  문서  바탕화면  비디오  사진  음악  템플릿
+student7@student7-virtual-machine:~$ chown student7 sample
+chown: 'sample'의 소유권 바꾸는 중: 명령을 허용하지 않음
+student7@student7-virtual-machine:~$ logout
+root@student7-virtual-machine:~# ls
+new.txt       student71.xz  test2         test3      다운로드  비디오  템플릿
+snap          test          test2.txt     test3.txt  문서      사진
+student7.tar  test1         test2.txt.xz  공개       바탕화면  음악
+root@student7-virtual-machine:~# mkdir linkdir
+root@student7-virtual-machine:~# cd linkdir
+root@student7-virtual-machine:~/linkdir# ~/linkdir# nano originafile
+bash: /root/linkdir#: 그런 파일이나 디렉터리가 없습니다
+root@student7-virtual-machine:~/linkdir# nano orignafile
+root@student7-virtual-machine:~/linkdir# cat originafile
+cat: originafile: 그런 파일이나 디렉터리가 없습니다
+root@student7-virtual-machine:~/linkdir# cat orignafile
+원본파일입니다.
+
+root@student7-virtual-machine:~/linkdir# ^C
+root@student7-virtual-machine:~/linkdir# ^C
+root@student7-virtual-machine:~/linkdir# 
